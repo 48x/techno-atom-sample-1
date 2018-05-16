@@ -21,10 +21,12 @@ public class TestGenerateIntSequence {
 
                 Assert.assertNotNull(sequence);
                 Assert.assertEquals(3, sequence.size());
-                for (int i : sequence) Assert.assertEquals(startNum+i,sequence.get(i).intValue());
+                for (int i : sequence) {
+                        Assert.assertEquals(startNum+i,sequence.get(i).intValue());
+                }
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test
         public void testNullItemsCountExceptionThrown() {
                 try { ClassToBeTested.generateIntSequence(5, 0);
                         Assert.fail("Method did not throw exception when second items count was 0");
@@ -34,7 +36,7 @@ public class TestGenerateIntSequence {
 
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test
         public void testMoreThenIntegerMaxValueSequenceGen() {
                 for (int i = 0; i <1; i++) {
                         try { ClassToBeTested.generateIntSequence(i, Integer.MAX_VALUE);
