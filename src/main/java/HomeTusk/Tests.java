@@ -2,8 +2,12 @@ package HomeTusk;
 
 import org.junit.jupiter.api.Test;
 import ru.odnoklassniki.ClassToBeTested;
+import org.junit.jupiter.api.Assertions;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
@@ -73,8 +77,9 @@ public class Tests{
     public void TestIfFinishNumberEqualsManInt(){
         int startingNumber = Integer.MAX_VALUE - 2;
         int itemsCount = 2;
-        ClassToBeTested.generateIntSequence( startingNumber, itemsCount);
-        assertEquals(startingNumber + itemsCount,Integer.MAX_VALUE);
+        List<Integer> IntSequence = ClassToBeTested.generateIntSequence( startingNumber, itemsCount);
+        Assertions.assertNotNull(IntSequence);
+        Assertions.assertEquals(IntSequence.size(),itemsCount,"Not all numbers is contained");
     }
 
     /**
@@ -84,6 +89,8 @@ public class Tests{
     public void TestIfEverythingIsNormal(){
         int startingNumber = 100;
         int itemsCount = 300;
-        ClassToBeTested.generateIntSequence(startingNumber, itemsCount);
+        List<Integer> IntSequence = ClassToBeTested.generateIntSequence(startingNumber, itemsCount);
+        Assertions.assertNotNull(IntSequence);
+        Assertions.assertEquals(IntSequence.size(),itemsCount,"Not all numbers is contained");
     }
 }
